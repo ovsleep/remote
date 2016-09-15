@@ -3,7 +3,7 @@ var exec = require('child_process').exec;
 
 // Internal methods
 
-var command = 'irsend -d /dev/lirc0 ';
+var command = 'irsend';
 
 function _list(remote, code) {
     if (!remote) remote = '';
@@ -79,12 +79,13 @@ exports.send_once = function (remote, code) {
     return new Promise((resolve, reject) => {
         var command = _send_once(remote, code);
         console.log(command);
-        exec(command, (err, result) => {
-            if (err) reject(err);
-            else resolve(result);
-        });
 
-        //setTimeout(() => { resolve(); }, 500);
+        //exec(command, (err, result) => {
+        //    if (err) reject(err);
+        //    else resolve(result);
+        //});
+
+        setTimeout(() => { resolve(); }, 100);
     });
 };
 

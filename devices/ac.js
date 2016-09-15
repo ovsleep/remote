@@ -5,7 +5,7 @@ exports.on = function () {
 };
 
 exports.off = function () {
-    return irsend.send_once('ac', 'key_off');
+    return irsend.send_once('ac2', 'key_off');
 };
 
 exports.set = function (data) {

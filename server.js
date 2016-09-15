@@ -22,7 +22,7 @@ for (commandCtrl in commandsControllers) {
     commands[cmd.cmdName] = cmd.execute;
 }
 
-console.log(commands);
+//console.log(commands);
 
 // configure app to use bodyParser()
 // this will let us get the data from a POST
@@ -39,7 +39,7 @@ router.route('/remote')
     .post(function (req, res) {
         var action = req.body;
         console.log(action);
-        console.log('command: ' + action.command);
+        //console.log('command: ' + action.command);
         if (commands[action.command]) {
             commands[action.command](action.data)
                 .then((result) => { res.json({ message: 'OK!' }); })

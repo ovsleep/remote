@@ -80,12 +80,16 @@ exports.send_once = function (remote, code) {
         var command = _send_once(remote, code);
         console.log(command);
 
-        //exec(command, (err, result) => {
-        //    if (err) reject(err);
-        //    else resolve(result);
-        //});
+        if (process.env.debug) {
+            setTimeout(() => { resolve(); }, 100);
+        }
+        else {
+            exec(command, (err, result) => {
+                if (err) reject(err);
+                else resolve(result);
+            });
 
-        setTimeout(() => { resolve(); }, 100);
+        }
     });
 };
 

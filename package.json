@@ -3,6 +3,7 @@
   "main": "server.js",
   "dependencies": {
     "body-parser": "~1.0.1",
+    "dotenv": "^2.0.0",
     "express": "~4.0.0",
     "lirc_node": "0.0.4",
     "require-dir": "^0.3.0"

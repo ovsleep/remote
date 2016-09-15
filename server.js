@@ -8,6 +8,12 @@ var express = require('express');        // call express
 var app = express();                 // define our app using express
 var bodyParser = require('body-parser');
 
+const dotenv = require('dotenv');
+dotenv.load();
+
+if (process.env.debug) {
+    console.log('irsend is in debug mode, the commands wont be sent to irsend. They will only be logged in console. To exit debug mode, change "debug" option in .env file');
+}
 var requireDir = require('require-dir');
 var commandsControllers = requireDir('./commands');
 

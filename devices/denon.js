@@ -48,6 +48,9 @@ exports.volume = function (option) {
     cmdExec.addCommand(irsend.send_once_data, { remote: 'denon', key: key }, 200);
     cmdExec.addCommand(irsend.send_once_data, { remote: 'denon', key: key }, 200);
     cmdExec.addCommand(irsend.send_once_data, { remote: 'denon', key: key }, 200);
+    cmdExec.addCommand(irsend.send_once_data, { remote: 'denon', key: key }, 200);
+    cmdExec.addCommand(irsend.send_once_data, { remote: 'denon', key: key }, 200);
+    cmdExec.addCommand(irsend.send_once_data, { remote: 'denon', key: key }, 200);
 
     return cmdExec.execute();
 }

@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="commandExecutor.js" />
+    <Content Include="commands\volume.js" />
     <Content Include="commands\ac.js" />
     <Content Include="commands\change.js" />
     <Content Include="commands\off.js" />

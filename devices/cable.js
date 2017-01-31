@@ -24,14 +24,16 @@ exports.ok = function () {
 
 exports.channel = function (channel) {
     var cmdExec = new CommandExecutor();
-    if (channels[channel]) {
-        var numberStr = channels[channel];
-        for (i = 0; i < numberStr.length; i++) {
+    var numberStr = channel.toString();
+    if (channels[channel]) { //in case the channel is sent by Name instead by number
+        numberStr = channels[channel];
+    }
+    console.log(numberStr.length);
+    for (i = 0; i < numberStr.length; i++) {
             var number = numberStr[i];
             var btn = 'KEY_' + number;
             cmdExec.addCommand(irsend.send_once_data, {remote: 'directv', key: btn}, 200);
         }
-    }
 
     return cmdExec.execute();
 };

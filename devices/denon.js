@@ -30,7 +30,6 @@ exports.watch = function (device) {
     return irsend.send_once('denon', key);
 }
 
-
 exports.volume = function (option) {
     var key = '';
     if (option == 'up') {
@@ -53,4 +52,8 @@ exports.volume = function (option) {
     cmdExec.addCommand(irsend.send_once_data, { remote: 'denon', key: key }, 200);
 
     return cmdExec.execute();
+}
+
+exports.key = function (key) {
+    return irsend.send_once('denon', key);
 }

@@ -38,6 +38,10 @@ exports.channel = function (channel) {
     return cmdExec.execute();
 };
 
+exports.key = function (key) {
+    return irsend.send_once('directv', key);
+}
+
 //function sendSequence(seq, idx, wait) {
 //    if (idx < seq.length) {
        

@@ -4,6 +4,9 @@
 // =============================================================================
 
 // call the packages we need
+var fs = require('fs');
+var https = require('https');
+
 var express = require('express');        // call express
 var app = express();                 // define our app using express
 var bodyParser = require('body-parser');
@@ -55,11 +58,43 @@ app.use(function (req, res, next) {
     next();
 });
 
-var port = process.env.PORT || 9589;        // set our port
+var port = process.env.PORT || 9599;        // set our port
 
 // ROUTES FOR OUR API
 // =============================================================================
 var router = express.Router();              // get an instance of the express Router
+
+
+router.route('/hook')
+    .post(function(req, res) {
+        console.log('hook request');
+
+            var speech = 'empty';
+            if (req.body) {
+                if (req.body.result) {
+                    speech = '';
+
+                    if (req.body.result.fulfillment) {
+                        speech += req.body.result.fulfillment.speech;
+                        speech += ' ';
+                    }
+
+                    if (req.body.result.action) {
+                        speech += 'action: ' + req.body.result.action;
+                    }
+                }
+            }
+
+        console.log('result: ', speech);
+
+        return res.json({
+            speech: speech,
+            displayText: speech,
+            data: [],
+            contextOut: [],
+            source: 'yahooweather'
+        });
+    });
 
 router.route('/remote')
     .post(function (req, res) {
@@ -75,13 +110,23 @@ router.route('/remote')
             res.json({ message: 'No Command' });
         }
 
+    })
+    .get(function(req,res){
+        console.log(req);
+        res.json({ message: 'No get plese' });
     });
 
 // REGISTER OUR ROUTES -------------------------------
 // all of our routes will be prefixed with /api
-app.use('/api', router);
+//app.use('/api', router);
 
 // START THE SERVER
 // =============================================================================
-app.listen(port);
+
+https.createServer({
+      key: fs.readFileSync('newkey.pem'),
+      cert: fs.readFileSync('cert.pem')
+    }, app).listen(port);
+
+//app.listen(port);
 console.log('Magic happens on port ' + port);

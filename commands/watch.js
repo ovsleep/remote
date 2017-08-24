@@ -1,6 +1,7 @@
 ﻿const denon = require('../devices/denon');
 const tv = require('../devices/tv');
 const cable = require('../devices/cable');
+const xbox = require('../devices/xbox');
 const CommandExecutor = require('../commandExecutor');
 
 exports.execute = function (data) {
@@ -12,7 +13,11 @@ exports.execute = function (data) {
         cmdExec.addCommand(cable.ok); //in case directv is in sleep mode
     }
     else {
-        cmdExec.addCommand(cable.off);
+        //cmdExec.addCommand(cable.off);
+    }
+
+    if(data.device == 'xbox'){
+      cmdExec.addCommand(xbox.on);
     }
 
     cmdExec.addCommand(denon.watch, data.device);

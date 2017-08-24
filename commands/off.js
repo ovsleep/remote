@@ -12,6 +12,7 @@ exports.execute = function (data) {
             cmdExec.addCommand(denon.off);
             cmdExec.addCommand(tv.off);
             cmdExec.addCommand(cable.off);
+            cmdExec.addCommand(xbox.off);
             break;
         case 'ac':
             cmdExec.addCommand(ac.off);
@@ -21,6 +22,7 @@ exports.execute = function (data) {
             cmdExec.addCommand(tv.off);
             cmdExec.addCommand(cable.off);
             cmdExec.addCommand(ac.off);
+            cmdExec.addCommand(xbox.off);
             break;
     }
 

@@ -2,6 +2,7 @@
 const cable = require('../devices/cable');
 const tv = require('../devices/tv');
 const ac = require('../devices/ac');
+const xbox = require('../devices/xbox');
 const CommandExecutor = require('../commandExecutor');
 
 exports.execute = function (data) {

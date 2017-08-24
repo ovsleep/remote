@@ -2,3 +2,6 @@
 /.vs
 /node_modules
 /obj
+cert.pem
+key.pem
+newkey.pem

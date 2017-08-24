@@ -1,6 +1,7 @@
 ﻿const denon = require('../devices/denon');
 const cable = require('../devices/cable');
 const tv = require('../devices/tv');
+const xbox = require('../devices/xbox');
 const CommandExecutor = require('../commandExecutor');
 
 exports.execute = function (data) {
@@ -15,6 +16,9 @@ exports.execute = function (data) {
             break;
         case 'denon':
             cmdExec.addCommand(denon.key, data.key);
+            break;
+        case 'xbox':
+            cmdExec.addCommand(xbox.key, data.key);
             break;
     }
 
